@@ -18,7 +18,7 @@ class MyDefaults : UserDefaults {
 
     override func set(_ value: Any?, forKey defaultName: String) {
         if defaultName == "plans" {
-        setPlansWasCalled += 1
+            setPlansWasCalled += 1
             setValuePlans = value
         } else {
             setMadeWasCalled += 1
@@ -93,14 +93,14 @@ class ToDoListRepositoryTest: XCTestCase {
     }
     
     func testEditTaskFail() {
-    //prepare
-    testRepository.save()
-    let someArray = storage.setValuePlans as! [String]
-    //event
-    testRepository.editTask(index: 0, "")
-    testRepository.save()
-    //check
-    XCTAssertEqual(someArray, storage.setValuePlans as! [String])
+        //prepare
+        testRepository.save()
+        let someArray = storage.setValuePlans as! [String]
+        //event
+        testRepository.editTask(index: 0, "")
+        testRepository.save()
+        //check
+        XCTAssertEqual(someArray, storage.setValuePlans as! [String])
     }
     
     func testDeleteTask() {
@@ -131,7 +131,7 @@ class ToDoListRepositoryTest: XCTestCase {
         XCTAssertTrue((storage.setValueMade as! [String]).contains(task))
     }
     
-    func testMarkDoneFromMade(){
+    func testMarkDoneFromMade() {
         //prepere
         let sectionMade = 1
         let indexMade = 0
