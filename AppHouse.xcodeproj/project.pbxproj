@@ -17,7 +17,6 @@
 		95264BEC218F0CA2007330A9 /* AppHouseUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95264BEB218F0CA2007330A9 /* AppHouseUnitTests.swift */; };
 		958BDE7E21983B30009E0943 /* ToDoListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958BDE7D21983B30009E0943 /* ToDoListRepository.swift */; };
 		958BDE80219880CB009E0943 /* ToDoListRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958BDE7F219880CB009E0943 /* ToDoListRepositoryTest.swift */; };
-		95FB3CC0218F500D00E8D820 /* TodoListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3CBF218F500D00E8D820 /* TodoListViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +60,6 @@
 		958BDE7D21983B30009E0943 /* ToDoListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListRepository.swift; sourceTree = "<group>"; };
 		958BDE7F219880CB009E0943 /* ToDoListRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListRepositoryTest.swift; sourceTree = "<group>"; };
 		95A4962F218E0626005CB5DB /* AppHouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppHouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95FB3CBF218F500D00E8D820 /* TodoListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +136,6 @@
 			children = (
 				95264BEB218F0CA2007330A9 /* AppHouseUnitTests.swift */,
 				958BDE7F219880CB009E0943 /* ToDoListRepositoryTest.swift */,
-				95FB3CBF218F500D00E8D820 /* TodoListViewControllerTests.swift */,
 				95264BED218F0CA2007330A9 /* Info.plist */,
 			);
 			path = AppHouseUnitTests;
@@ -322,7 +319,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				958BDE80219880CB009E0943 /* ToDoListRepositoryTest.swift in Sources */,
-				95FB3CC0218F500D00E8D820 /* TodoListViewControllerTests.swift in Sources */,
 				95264BEC218F0CA2007330A9 /* AppHouseUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
