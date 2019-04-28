@@ -18,7 +18,7 @@ class MyDefaults : UserDefaults {
 
     override func set(_ value: Any?, forKey defaultName: String) {
         if defaultName == "plans" {
-        setPlansWasCalled += 1
+            setPlansWasCalled += 1
             setValuePlans = value
         } else {
             setMadeWasCalled += 1
@@ -69,8 +69,10 @@ class ToDoListRepositoryTest: XCTestCase {
         let count = testRepository.plansCount()
         //event
         testRepository.addNewTask("New task")
+        testRepository.save()
         //check
         XCTAssertEqual(count + 1, testRepository.plansCount())
+        XCTAssertTrue((storage.setValuePlans as! [String]).contains("New task"))
     }
     
     func testAddNewTaskFail() {
@@ -91,16 +93,59 @@ class ToDoListRepositoryTest: XCTestCase {
     }
     
     func testEditTaskFail() {
-    //prepare
-    testRepository.save()
-    let someArray = storage.setValuePlans as! [String]
-    //event
-    testRepository.editTask(index: 0, "")
-    testRepository.save()
-    //check
-    XCTAssertEqual(someArray, storage.setValuePlans as! [String])
+        //prepare
+        testRepository.save()
+        let someArray = storage.setValuePlans as! [String]
+        //event
+        testRepository.editTask(index: 0, "")
+        testRepository.save()
+        //check
+        XCTAssertEqual(someArray, storage.setValuePlans as! [String])
     }
     
-
+    func testDeleteTask() {
+        //prepare
+        let countPlans = testRepository.plansCount()
+        let countMade = testRepository.madeCount()
+        //event
+        testRepository.deleteFunction(section: 0, index: 0)
+        testRepository.deleteFunction(section: 1, index: 0)
+        //check
+        XCTAssertEqual(countPlans - 1, testRepository.plansCount())
+        XCTAssertEqual(countMade - 1, testRepository.madeCount())
+    }
+    
+    func testMarkDoneFromPlans() {
+        //prepere
+        let sectionPlans = 0
+        let indexPlans = 0
+        let task = testRepository.getTaskPlansArray(index: indexPlans)
+        let countPlans = testRepository.plansCount()
+        let countMade = testRepository.madeCount()
+        //event
+        testRepository.markDoneFunction(section: sectionPlans, index: indexPlans)
+        testRepository.save()
+        //check
+        XCTAssertEqual(countPlans - 1, testRepository.plansCount())
+        XCTAssertEqual(countMade + 1, testRepository.madeCount())
+        XCTAssertTrue((storage.setValueMade as! [String]).contains(task))
+    }
+    
+    func testMarkDoneFromMade() {
+        //prepere
+        let sectionMade = 1
+        let indexMade = 0
+        let task = testRepository.getTaskMadeArray(index: indexMade)
+        let countPlans = testRepository.plansCount()
+        let countMade = testRepository.madeCount()
+        //event
+        testRepository.markDoneFunction(section: sectionMade, index: indexMade)
+        testRepository.save()
+        //check
+        XCTAssertEqual(countMade - 1, testRepository.madeCount())
+        XCTAssertEqual(countPlans + 1, testRepository.plansCount())
+        XCTAssertTrue((storage.setValuePlans as! [String]).contains(task))
+        
+    }
 }
 
